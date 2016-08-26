@@ -3,11 +3,10 @@ import { OnInit } from '@angular/core';
 import { HeroDetailComponent } from './hero-detail.component';
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
-
+//   <hero-detail [hero]="selectedHero"></hero-detail>
 @Component({
   selector: 'my-heroes',
   template: `
-  <h1>{{title}}</h1>
   <h2>My Heroes</h2>
   <ul class="heroes">
     <li *ngFor="let hero of heroes"
@@ -16,7 +15,6 @@ import { HeroService } from './hero.service';
       <span class="badge">{{hero.id}}</span> {{hero.name}}
     </li>
   </ul>
-  <hero-detail [hero]="selectedHero"></hero-detail>
   `,
   styles: [`
     .selected {
@@ -66,11 +64,9 @@ import { HeroService } from './hero.service';
       margin-right: .8em;
       border-radius: 4px 0 0 4px;
     }
-  `],
-    providers: [HeroService]
+  `]
 })
 export class HeroesComponent implements OnInit {
-  title = 'Tour of Heroes';
   heroes : Hero[];
   selectedHero: Hero;
 

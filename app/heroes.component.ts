@@ -3,7 +3,7 @@ import { OnInit } from '@angular/core';
 import { HeroDetailComponent } from './hero-detail.component';
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
-//   <hero-detail [hero]="selectedHero"></hero-detail>
+
 @Component({
   selector: 'my-heroes',
   template: `
@@ -15,6 +15,7 @@ import { HeroService } from './hero.service';
       <span class="badge">{{hero.id}}</span> {{hero.name}}
     </li>
   </ul>
+  <hero-detail [hero]="selectedHero"></hero-detail>
   `,
   styles: [`
     .selected {
@@ -67,19 +68,15 @@ import { HeroService } from './hero.service';
   `]
 })
 export class HeroesComponent implements OnInit {
-  heroes : Hero[];
+  heroes: Hero[];
   selectedHero: Hero;
-
-  constructor( private heroService : HeroService) {};
-
+  constructor(private heroService: HeroService) { }
   getHeroes(): void {
-      this.heroService.getHeroes().then(heroes => this.heroes = heroes);
-    }
-
+    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+  }
   ngOnInit(): void {
     this.getHeroes();
   }
-
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
